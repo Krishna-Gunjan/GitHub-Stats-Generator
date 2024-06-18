@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Stats for {{ profile_name }}</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0; /* light gray background */
+        }
+
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px; /* space between cards */
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px;
+            max-width: 600px;
+            background-color: #333; /* dark background */
+            color: #00ff00; /* neon green text color */
+        }
+
+        .card h2, .card h3 {
+            margin-top: 0;
+        }
+
+        .card p, .card li {
+            margin: 4px 0;
+        }
+
+        .languages {
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="card">
+            <h2>{{ profile_name }}</h2>
+            <p><strong>Followers:</strong> {{ followers_count }}</p>
+            <p><strong>Following:</strong> {{ following_count }}</p>
+            <p><strong>Stars:</strong> {{ stars }}</p>
+            <p><strong>Commits:</strong> {{ commits }}</p>
+            <p><strong>Current Streak:</strong> {{ current_streak }}</p>
+            <p><strong>Longest Streak:</strong> {{ longest_streak }}</p>
+        </div>
+
+        <div class="card languages">
+            <h3>Most used languages:</h3>
+            <ul>
+            {% for lang, percentage in languages_percentage.items() %}
+                <li>{{ lang }}: {{ percentage|round(2) }}%</li>
+            {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Additional Details</h2>
+            <p><strong>Total Issues:</strong> {{ issues }}</p>
+            <p><strong>Pull Requests:</strong> {{ pull_requests }}</p>
+            <p><strong>Contributions in the last year:</strong> {{ contributions_last_year }}</p>
+            <p><strong>Total Contributions:</strong> {{ total_contributions }}</p>
+            <p><strong>Achievements:</strong> {{ achievements }}</p>
+        </div>
+    </div>
+</body>
+</html>
